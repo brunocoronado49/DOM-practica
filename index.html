@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" class="app"></div>
+
+    <script>
+        // Nodo Padre
+        const container = document.querySelector("div")
+        console.log(container)
+
+        const h1 = document.createElement("h1")
+        container.appendChild(h1)
+
+        const textElement = document.createTextNode("Hola Mundo")
+        h1.appendChild(textElement)
+
+        const parrafo = document.createElement("p")
+        const parrafoText = document.createTextNode("Hola este es un texto")
+        parrafo.appendChild(parrafoText)
+
+        container.appendChild(parrafo)
+
+        const fecha = document.createElement("p")
+        const fechaText = document.createTextNode("Hola soy una fecha")
+        fecha.appendChild(fechaText)
+
+        container.insertBefore(fecha, h1)
+
+        const boton = document.createElement("button")
+        const botonText = document.createTextNode("Click me")
+        boton.appendChild(botonText)
+        boton.addEventListener("click", (event) => {
+            alert("Hola, acabas de dar un click")
+            console.log(event);
+        })
+        console.log(boton);
+
+        container.appendChild(boton)
+
+        console.log(h1.outerHTML);
+        h1.innerHTML = "Hola Nuevo Mundo"
+
+        console.log(container.className);
+        console.log(h1.nodeType);
+
+        const elemento = document.createElement("p")
+        const textoElemento = document.createTextNode("Hola soy un elemento a eliminar")
+        elemento.appendChild(textoElemento)
+        container.appendChild(elemento)
+
+        container.removeChild(elemento)
+        fecha.remove()
+
+        const nuevoElemento = document.createElement("p")
+        nuevoElemento.textContent = "Hola soy un elemento nuevo"
+        container.insertBefore(nuevoElemento, h1)
+
+        const nodos = []
+        
+        for (let i = 0; i < 100; i++) {
+            const node = document.createElement("input")
+            nodos.push(node)
+        }
+
+        document.body.append(...nodos)
+
+        const nuevoInput = document.createElement("input")
+        container.appendChild(nuevoInput)
+
+        nuevoInput.addEventListener("input", (event) => {
+            console.log("Hola, estas escribiendo algo...");
+            console.log("escribiste:", event.data);
+            console.log(event);
+        })
+
+        var numeros = 0
+        const contador = document.createElement("h4")
+        contador.textContent = numeros
+        container.appendChild(contador)
+        const botonContador = document.createElement("button")
+        botonContador.textContent = "Agregar"
+        container.appendChild(botonContador)
+
+        botonContador.addEventListener("click", () => {
+            numeros + 1
+        })
+    </script>
+</body>
+</html>
